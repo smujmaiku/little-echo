@@ -1,0 +1,18 @@
+# https://github.com/elgohr/Publish-Docker-Github-Action
+
+name: Publish Docker
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@757f58a82c2851acf641d0410b80e98680811614
+      with:
+        name: smujmaiku/little-echo
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
